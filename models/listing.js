@@ -10,13 +10,8 @@ const listingSchema = new Schema({
     },   
     description: String,
     image: {
-        type: String,
-        default:
-            "https://th.bing.com/th/id/OIP.eqKY8-vkKAtnfhyC_ELcPgHaEK?pid=ImgDet&w=474&h=266&rs=1",
-        set: (v) =>
-            v === " "
-        ? "https://th.bing.com/th/id/OIP.eqKY8-vkKAtnfhyC_ELcPgHaEK?pid=ImgDet&w=474&h=266&rs=1"
-        :v,
+        url: String,
+        filename: String,
    },  
     price: Number,
     location: String,
@@ -40,4 +35,4 @@ listingSchema.post("findOneAndDelete", async (listing) => {
 });
 
 const Listing = mongoose.model("Listing", listingSchema);
-module.exports = Listing;
+module.exports = Listing;           

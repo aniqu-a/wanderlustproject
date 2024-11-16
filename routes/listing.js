@@ -11,18 +11,15 @@ const { get } = require("mongoose");
 const upload = multer({ storage });
 
 router
-  .route("/")
- .get(wrapAsync(listingController.index))
+.route("/")
+.get(wrapAsync(listingController.index))
 .post(
   isLoggedIn,
   validateListing,
-upload.single("listing[name]"),
-
-wrapAsync(listingController.createListing)
+  upload.single("listing[image]"),
+  wrapAsync(listingController.createListing)
 );
-//.post(upload.single("listing[image]"), (req, res) => {
- // res.send(req.file);
-//});
+
 
 
 // New Route
@@ -33,8 +30,9 @@ router
   .get( wrapAsync(listingController.showListing))
   .put(
     isLoggedIn,
-    isOwner,
-    validateListing,
+    isOwner,   
+    upload.single("listing[image]"),
+   validateListing,
     wrapAsync(listingController.updateListing)
 )
   .delete(
@@ -51,4 +49,4 @@ router.get(
     wrapAsync(listingController.renderEditForm)
 );
 
-module.exports = router;
+module.exports = router;          
