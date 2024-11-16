@@ -40,9 +40,8 @@ module.exports.createListing = async (req, res, next) => {
     console.log(response.body.features[0].geometry);
     res.send("done!");
     
-    let url = req.file.path;
+   let url = req.file.path;
   let filename = req.file.filename;
-  
   const newListing = new Listing(req.body.listing);
   newListing.owner = req.user._id;
   newListing.image = {url, filename};
