@@ -55,9 +55,9 @@ const sessionOptions = {
     },
 };
 
-app.get("/", (req, res) => {
-    res.send("root is woring");
-});
+//app.get("/", (req, res) => {
+  //  res.send("root is woring");
+//});
 
 app.use(session(sessionOptions));
 app.use(flash());
@@ -102,4 +102,4 @@ app.use((err, req, res, next) => {
 
 app.listen(5050, () => {
     console.log("server is listening on port 5050"); 
-});     
+});         
